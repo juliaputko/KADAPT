@@ -70,13 +70,13 @@ namespace RootMotion.FinalIK {
 			Handles.DrawLine(bendPosition, endPosition);
 			
 			// Joints
-			Handles.SphereCap(0, solver.bone1.transform.position, Quaternion.identity, jointSize);
-			Handles.SphereCap(0, bendPosition, Quaternion.identity, jointSize);
-			Handles.SphereCap(0, endPosition, Quaternion.identity, jointSize);
+			Handles.SphereHandleCap(0, solver.bone1.transform.position, Quaternion.identity, jointSize, EventType.Repaint);
+			Handles.SphereHandleCap(0, bendPosition, Quaternion.identity, jointSize, EventType.Repaint);
+			Handles.SphereHandleCap(0, endPosition, Quaternion.identity, jointSize, EventType.Repaint);
 			
 			if (Application.isPlaying && (solver.IKPositionWeight > 0 || solver.IKRotationWeight > 0)) {
 				if (modifiable) {
-					Handles.CubeCap(0, solver.IKPosition, solver.IKRotation, selectedSize);
+					Handles.CubeHandleCap(0, solver.IKPosition, solver.IKRotation, selectedSize, EventType.Repaint);
 						
 					// Manipulating position and rotation
 					switch(Tools.current) {
